@@ -482,6 +482,9 @@ body {
 
 /* Rodapé */
 .footer {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
   text-align: center;
   padding: 2rem;
   margin-top: 3rem;
@@ -495,6 +498,11 @@ body {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  grid-column: 2;
+}
+
+.footer p {
+  grid-column: 1 / -1;
 }
 
 .btn-social {
@@ -782,5 +790,30 @@ img,
   .menu-toggle {
     padding: 0.45rem 0.7rem;
     font-size: 1rem;
+  }
+}
+
+.alura-logo {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+  justify-self: start;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .alura-logo,
+  .social-links,
+  .footer p {
+    grid-column: 1;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+    margin-bottom: 0;
   }
 }
