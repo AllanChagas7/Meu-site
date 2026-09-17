@@ -289,6 +289,11 @@ body {
 }
 
 .bg-comic-alt {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding-right: 5vw;
+  padding-left: 5vw;
   background: #eccc68;
   border-top: var(--comic-border);
   border-bottom: var(--comic-border);
@@ -718,6 +723,11 @@ img,
     width: 95%; /* Aproveita melhor o espaço da tela do celular */
   }
 
+  .bg-comic-alt {
+    padding-right: 2.5vw;
+    padding-left: 2.5vw;
+  }
+
   .comic-title {
     font-size: 2.2rem;
   }
@@ -748,5 +758,29 @@ img,
   /* Formulario de Contato */
   .contact-box {
     padding: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .header-left,
+  .header-right {
+    gap: 0.5rem;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .btn-music,
+  .btn-back,
+  .menu-toggle {
+    padding: 0.45rem 0.7rem;
+    font-size: 1rem;
   }
 }
