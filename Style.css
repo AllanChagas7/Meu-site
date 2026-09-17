@@ -338,6 +338,11 @@ body {
   border-radius: 8px;
 }
 
+#familia .section-image {
+  max-height: none;
+  object-fit: contain;
+}
+
 .image-caption {
   margin-top: 0.8rem;
   font-family: var(--font-title);
@@ -482,9 +487,6 @@ body {
 
 /* Rodapé */
 .footer {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  align-items: center;
   text-align: center;
   padding: 2rem;
   margin-top: 3rem;
@@ -495,18 +497,16 @@ body {
 
 .social-links {
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
-  grid-column: 2;
-}
-
-.footer p {
-  grid-column: 1 / -1;
 }
 
 .btn-social {
   color: #fff;
+  text-align: center;
 }
 
 .btn-linkedin { background: #0077b5; }
@@ -756,6 +756,10 @@ img,
     margin: 0 auto;
   }
 
+  #familia .section-image {
+    max-height: none;
+  }
+
   /* Grids de Projetos e Formação em 1 coluna no celular */
   .projects-grid,
   .education-grid,
@@ -793,27 +797,12 @@ img,
   }
 }
 
-.alura-logo {
-  width: 120px;
-  height: auto;
-  flex-shrink: 0;
-  justify-self: start;
-}
-
 @media (max-width: 600px) {
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .alura-logo,
-  .social-links,
-  .footer p {
-    grid-column: 1;
-  }
-
   .social-links {
-    flex-wrap: wrap;
-    margin-bottom: 0;
+    gap: 0.75rem;
+  }
+
+  .btn-social {
+    flex: 1 1 140px;
   }
 }
