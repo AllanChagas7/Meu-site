@@ -871,12 +871,29 @@ img,
   .navbar {
     flex-wrap: wrap;
     gap: 0.75rem;
-    min-height: 78px;
+    min-height: 0;
+  }
+
+  .logo {
+    position: static;
+    order: 1;
+    flex: 0 0 100%;
+    min-width: 0;
+    width: auto;
+    transform: none;
+    text-align: center;
   }
 
   .header-left,
   .header-right {
+    order: 2;
     gap: 0.5rem;
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .header-left {
+    justify-content: flex-start;
   }
 
   .header-right {

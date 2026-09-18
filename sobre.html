@@ -17,14 +17,13 @@
 <header class="navbar">
   <div class="header-left">
     <button id="btn-music" class="btn-comic btn-music" onclick="toggleMusica()">▶️ Áudio</button>
-    <div class="logo">
-      <a href="index.html">allan<span>hq</span></a>
-    
+    <audio id="musica-fundo" loop preload="auto">
+      <source src="./sons/musicafundo.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 
-      <audio id="musica-fundo" loop preload="auto">
-        <source src="./sons/musicafundo.mp3" type="audio/mpeg">
-      </audio>
-    </div>
+  <div class="logo">
+      <a href="index.html">allan<span>hq</span></a>
   </div>
 
   <div class="header-right">
@@ -32,10 +31,10 @@
       ⬅️ Voltar
     </button>
 
-    <button class="btn-comic menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
-      ☰ Menu
-      <div class="menu-container">
-    </button>
+    <div class="menu-container">
+      <button class="btn-comic menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
+        ☰ Menu
+      </button>
 
       <nav class="nav-links dropdown-menu" id="nav-menu">
         <a href="index.html" data-i18n="inicio">Início</a>
@@ -95,7 +94,7 @@
         <span class="tech-tag">HTML5</span>
       </div>
       <div class="project-links">
-        <a href="https://allanchagas7.github.io/Site-de-xadrez/" target="_blank" class="btn-comic btn-yellow">Ver Projeto ➔</a>
+        <a href="https://allanchagas7.github.io/Site-xadrez/" target="_blank" class="btn-comic btn-yellow">Ver Projeto ➔</a>
       </div>
     </article>
 
