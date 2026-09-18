@@ -112,6 +112,12 @@ body {
   margin-left: auto; /* Garante que o bloco fique encostado à direita */
 }
 
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .logo a {
   font-family: var(--font-title);
   font-size: 2rem;
@@ -865,6 +871,7 @@ img,
   .navbar {
     flex-wrap: wrap;
     gap: 0.75rem;
+    min-height: 78px;
   }
 
   .header-left,
@@ -893,4 +900,8 @@ img,
   .btn-social {
     flex: 1 1 140px;
   }
+}
+
+.audio {
+  position: relative;
 }
