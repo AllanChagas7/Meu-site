@@ -133,6 +133,8 @@ const traducoes = {
   }
 };
 
+const CHAVE_MUSICA = 'musicaFundoEstado';
+
 function changeLanguage(lang) {
   const elements = document.querySelectorAll('[data-i18n]');
   elements.forEach(element => {
@@ -232,23 +234,77 @@ document.addEventListener('DOMContentLoaded', () => {
       changeLanguage(selectedLang);
     });
   });
+
+  iniciarMusica();
 });
 
 // ===================================================
 // FUNÇÕES UTILITÁRIAS
 // ===================================================
+function iniciarMusica() {
+  const audio = document.getElementById('musica-fundo');
+  const btn = document.getElementById('btn-music');
+  if (!audio) return;
+
+  let estadoSalvo = null;
+  try {
+    estadoSalvo = JSON.parse(localStorage.getItem(CHAVE_MUSICA));
+  } catch (error) {
+    estadoSalvo = null;
+  }
+
+  const restaurarMusica = () => {
+    if (!estadoSalvo) return;
+    audio.currentTime = Number(estadoSalvo.tempo) || 0;
+
+    if (estadoSalvo.tocando) {
+      audio.play()
+        .then(() => atualizarBotaoMusica())
+        .catch(() => atualizarBotaoMusica());
+    }
+  };
+
+  if (audio.readyState >= 1) {
+    restaurarMusica();
+  } else {
+    audio.addEventListener('loadedmetadata', restaurarMusica, { once: true });
+  }
+
+  audio.addEventListener('play', atualizarBotaoMusica);
+  audio.addEventListener('pause', atualizarBotaoMusica);
+}
+
+function salvarEstadoMusica() {
+  const audio = document.getElementById('musica-fundo');
+  if (!audio) return;
+
+  localStorage.setItem(CHAVE_MUSICA, JSON.stringify({
+    tempo: audio.currentTime,
+    tocando: !audio.paused
+  }));
+}
+
+function atualizarBotaoMusica() {
+  const audio = document.getElementById('musica-fundo');
+  const btn = document.getElementById('btn-music');
+  if (audio && btn) {
+    btn.textContent = audio.paused ? '▶️ Áudio' : '⏸️ Pausar';
+  }
+}
+
+window.addEventListener('pagehide', salvarEstadoMusica);
+
 function toggleMusica() {
   const audio = document.getElementById('musica-fundo');
   const btn = document.getElementById('btn-music');
   if (!audio) return;
   
   if (audio.paused) {
-    audio.play();
-    btn.textContent = '⏸️ Pausar';
+    audio.play()
+      .then(() => atualizarBotaoMusica())
+      .catch(() => atualizarBotaoMusica());
   } else {
     audio.pause();
-    btn.textContent = '▶️ Áudio';
-    return;
   }
 }
 
